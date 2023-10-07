@@ -11,6 +11,8 @@ RUN apt update && \
       liblimesuite-dev \
       libncurses-dev \
       librtlsdr-dev \
+      python3.5 \
+      python3-pip \
       pkg-config && \
     rm -rf /var/lib/apt/lists/*
 
@@ -28,6 +30,8 @@ RUN apt update && \
       liblimesuite20.10-1 \
       libncurses6 \
       librtlsdr0 \
+      python3.5 \
+      python3-pip \
       nginx && \
     rm -rf /var/lib/apt/lists/*
 
@@ -43,5 +47,5 @@ COPY mime.types /mime.types
 COPY run.sh /run.sh
 
 EXPOSE 8080 30001 30002 30003 30004 30005 30104
-
+RUN pip install adsbcot
 ENTRYPOINT ["/run.sh"]
